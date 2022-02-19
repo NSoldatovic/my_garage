@@ -123,7 +123,7 @@ class Info extends StatelessWidget {
             child: FittedBox(
               fit: BoxFit.contain,
               child: Text(
-                value ??= '/',
+                value ??= '-',
               ),
             ),
           ),

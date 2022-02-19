@@ -80,8 +80,14 @@ class NoVehicleAdded extends StatelessWidget {
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: const [
-        Text('No vehicles were added to the garage.'),
-        Text('Start adding them!')
+        Text(
+          'No vehicles were added to the garage.',
+          style: TextStyle(fontSize: 17),
+        ),
+        Text(
+          'Start adding them!',
+          style: TextStyle(fontSize: 30),
+        )
       ],
     ));
   }

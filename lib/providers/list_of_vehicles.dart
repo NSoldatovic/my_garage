@@ -42,6 +42,7 @@ class VehicleList with ChangeNotifier {
     notifyListeners();
     final String temp =
         newVehicle.regDate == null ? 'null' : newVehicle.regDate.toString();
+    print(temp);
     DBHelper.insert('user_vehicles', {
       'id': newVehicle.id,
       'year': newVehicle.year,
@@ -59,7 +60,7 @@ class VehicleList with ChangeNotifier {
       'isFav': newVehicle.isFav ? 1 : 0,
       'image': newVehicle.image == null ? 'null' : newVehicle.image!.path,
     });
-    print('nesto radi');
+    print('Dodat auto');
   }
 
   void fetchAndSetPlaces(List<Map<String, dynamic>> dataList) {

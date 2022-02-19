@@ -68,56 +68,56 @@ class _MyAppState extends State<MyApp> {
       print('Jeste PRVI RUNN DOBRO JE ZA SADa');
       DBHelper.insert('user_vehicles', {
         'id': '111111111',
-        'year': '2018',
+        'year': '2020',
         'brand': 'BMW',
         'model': 'X3',
-        'description': 'Ovaj auto je namenjen da se vozim brzo',
+        'description': 'This is an example of a car in a garage',
         'imgUrl':
-            'https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500.jpg',
+            'https://media.ed.edmunds-media.com/bmw/x3/2022/oem/2022_bmw_x3_4dr-suv_xdrive30i_fq_oem_1_1280.jpg',
         'transmission': 'Automatic',
-        'mileage': '113000',
-        'fuelType': 'null',
-        'engine': '1110',
-        'tires': 'null',
-        'regDate': 'null',
+        'mileage': '11000',
+        'fuelType': 'Diesel',
+        'engine': '339',
+        'tires': 'All-season',
+        'regDate': '2021-11-19 00:00:00.000',
         'fuel': 95,
         'isFav': 1,
         'image': 'null',
       });
       DBHelper.insert('user_vehicles', {
         'id': '2222222',
-        'year': '2018',
-        'brand': 'BMW',
-        'model': 'X3',
-        'description': 'Ovaj auto je namenjen da se vozim brzo',
+        'year': '2022',
+        'brand': 'MERCEDES BENZ',
+        'model': 'C CLASS',
+        'description': 'This is an example of a car in a garage',
         'imgUrl':
-            'https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500.jpg',
+            'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-mercedes-benz-c-class-106-1613767205.jpg',
         'transmission': 'Automatic',
-        'mileage': '113000',
+        'mileage': '56000',
         'fuelType': 'null',
-        'engine': '1110',
+        'engine': '339',
         'tires': 'null',
         'regDate': 'null',
-        'fuel': 95,
-        'isFav': 1,
+        'fuel': 70,
+        'isFav': 0,
         'image': 'null',
       });
       DBHelper.insert('user_vehicles', {
         'id': '3333333',
         'year': '2018',
-        'brand': 'BMW',
-        'model': 'X3',
-        'description': 'Ovaj auto je namenjen da se vozim brzo',
+        'brand': 'FORD',
+        'model': 'MUSTANG GT',
+        'description': 'This is an example of a car in a garage',
         'imgUrl':
-            'https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500.jpg',
-        'transmission': 'Automatic',
+            'https://www.tuningblog.eu/wp-content/uploads/2020/11/Pettys-Garage-Ford-Mustang-GT-Tuning-Warrior-Edition-12.jpg',
+        'transmission': 'Manual',
         'mileage': '113000',
-        'fuelType': 'null',
-        'engine': '1110',
-        'tires': 'null',
-        'regDate': 'null',
-        'fuel': 95,
-        'isFav': 1,
+        'fuelType': 'Diesel',
+        'engine': '339',
+        'tires': 'Summer',
+        'regDate': '2022-01-19 00:00:00.000',
+        'fuel': 30,
+        'isFav': 0,
         'image': 'null',
       });
     } else {
@@ -130,7 +130,7 @@ class _MyAppState extends State<MyApp> {
     print('Pali app');
 
     return FutureBuilder(
-        future: Future.delayed(const Duration(seconds: 2)),
+        future: Future.delayed(const Duration(seconds: 0)),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return const AndroidAppDesign();

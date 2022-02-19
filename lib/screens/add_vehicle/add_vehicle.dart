@@ -157,6 +157,7 @@ class _AddVehicleState extends State<AddVehicle> {
 
     _editedVehicle.tires = tiresValue == 'null' ? null : tiresValue;
     _editedVehicle.fuelType = fuelTypeValue == 'null' ? null : fuelTypeValue;
+    print(_selectedDate);
     _editedVehicle.regDate = _selectedDate;
 
     if (_editedVehicle.id != 'tempId') {
@@ -327,8 +328,6 @@ class _AddVehicleState extends State<AddVehicle> {
                                         decoration:
                                             InputDecoration(labelText: 'Model'),
                                         textInputAction: TextInputAction.next,
-                                        textCapitalization:
-                                            TextCapitalization.characters,
                                         focusNode: _modelFocusNode,
                                         onFieldSubmitted: (_) {
                                           FocusScope.of(context).requestFocus(
@@ -746,9 +745,11 @@ class _AddVehicleState extends State<AddVehicle> {
                                   height: size.height * 0.12,
                                   width: size.width * 0.4,
                                   child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Container(
-                                          alignment: Alignment.topLeft,
+                                          //alignment: Alignment.topLeft,
                                           child: Text('Registration Date')),
                                       OutlinedButton(
                                         child: const Text(
@@ -762,7 +763,7 @@ class _AddVehicleState extends State<AddVehicle> {
                                       Text(
                                         _selectedDate == null
                                             ? 'No Date Chosen!'
-                                            : 'Picked Date: ${DateFormat.yMd().format(_selectedDate!)}',
+                                            : 'Picked Date:\n ${DateFormat.yMd().format(_selectedDate!)}',
                                       ),
                                     ],
                                   ),

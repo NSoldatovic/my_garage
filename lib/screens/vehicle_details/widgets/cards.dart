@@ -7,7 +7,11 @@ import '../../../providers/theme_manager.dart';
 import 'graph.dart';
 
 class Cards extends StatelessWidget {
-  const Cards({Key? key}) : super(key: key);
+  final int fuel;
+  final DateTime? regDate;
+
+  const Cards({Key? key, required this.fuel, required this.regDate})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +23,14 @@ class Cards extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Registration(),
-            Fuel(),
+            Registration(
+                days: regDate == null
+                    ? '-'
+                    : DateTime(regDate!.year + 1, regDate!.month, regDate!.day)
+                        .difference(DateTime.now())
+                        .inDays
+                        .toString()),
+            Fuel(fuel: fuel),
             Avg(),
             LastService(),
           ],
@@ -31,7 +41,8 @@ class Cards extends StatelessWidget {
 }
 
 class Fuel extends StatelessWidget {
-  const Fuel({Key? key}) : super(key: key);
+  final int fuel;
+  const Fuel({Key? key, required this.fuel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +58,7 @@ class Fuel extends StatelessWidget {
             Colors.indigo,
           ];
     return Container(
-      margin: EdgeInsets.only(right: 20, bottom: 15),
+      margin: const EdgeInsets.only(right: 20, bottom: 15),
       width: 140,
       height: 160,
       decoration: BoxDecoration(
@@ -71,14 +82,17 @@ class Fuel extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               'Fuel',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                  color: Colors.white),
             ),
-            Expanded(child: FuelMeter(value: 60))
+            Expanded(child: FuelMeter(value: fuel))
           ],
         ),
       ),
@@ -87,7 +101,8 @@ class Fuel extends StatelessWidget {
 }
 
 class Registration extends StatelessWidget {
-  const Registration({Key? key}) : super(key: key);
+  final String days;
+  const Registration({Key? key, required this.days}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -131,14 +146,16 @@ class Registration extends StatelessWidget {
           children: [
             Text('Registration Expires In ',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                )),
-            Text(
-              '111',
-              style: TextStyle(
-                fontSize: 50,
-                fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.white)),
+            Center(
+              child: Text(
+                days,
+                style: TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
             ),
             Container(
@@ -273,12 +290,17 @@ class LastService extends StatelessWidget {
                 children: [
                   Text(
                     '95',
-                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                   Column(
                     children: [
                       Text('days',
-                          style: TextStyle(fontStyle: FontStyle.italic)),
+                          style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              color: Colors.white)),
                       addVerticalSpace(10),
                     ],
                   )
@@ -291,7 +313,7 @@ class LastService extends StatelessWidget {
               Text(
                 'Since Last Service',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20, color: Colors.white),
               )
             ],
           )),

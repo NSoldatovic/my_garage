@@ -126,7 +126,7 @@ class FuelMeter extends StatelessWidget {
     _color1 = Colors.black;
     _color2 = Colors.black;
     _color3 = Colors.black;
-    _color4 = Colors.red;
+    _color4 = Colors.black;
     _color5 = Colors.black;
     _color6 = Colors.black;
     _color7 = Colors.black;
@@ -170,122 +170,126 @@ class FuelMeter extends StatelessWidget {
       _onTenthRangeColorChanged();
     }
 
-    return SfRadialGauge(
-      axes: <RadialAxis>[
-        RadialAxis(
-            startAngle: 180,
-            endAngle: 0,
-            showTicks: false,
-            showAxisLine: false,
-            showLabels: false,
-            canScaleToFit: true,
-            ranges: <GaugeRange>[
-              GaugeRange(
-                  startValue: 0,
-                  endValue: 10,
-                  startWidth: 10,
-                  endWidth: 12.5,
-                  color: _color1),
-              GaugeRange(
-                  startValue: 12,
-                  endValue: 20,
-                  startWidth: 12.5,
-                  endWidth: 15,
-                  color: _color2),
-              GaugeRange(
-                  startValue: 22,
-                  endValue: 30,
-                  startWidth: 15,
-                  endWidth: 17.5,
-                  color: _color3),
-              GaugeRange(
-                  startValue: 32,
-                  endValue: 40,
-                  startWidth: 17.5,
-                  endWidth: 20,
-                  color: _color4),
-              GaugeRange(
-                  startValue: 42,
-                  endValue: 50,
-                  startWidth: 20,
-                  endWidth: 22.5,
-                  color: _color5),
-              GaugeRange(
-                  startValue: 52,
-                  endValue: 60,
-                  startWidth: 22.5,
-                  endWidth: 25,
-                  color: _color6),
-              GaugeRange(
-                  startValue: 62,
-                  endValue: 70,
-                  startWidth: 25,
-                  endWidth: 27.5,
-                  color: _color7),
-              GaugeRange(
-                  startValue: 72,
-                  endValue: 80,
-                  startWidth: 27.5,
-                  endWidth: 30,
-                  color: _color8),
-              GaugeRange(
-                  startValue: 82,
-                  endValue: 90,
-                  startWidth: 30,
-                  endWidth: 32.5,
-                  color: _color9),
-              GaugeRange(
-                  startValue: 92,
-                  endValue: 100,
-                  startWidth: 32.5,
-                  endWidth: 35,
-                  color: _color10)
-            ],
-            pointers: <GaugePointer>[
-              NeedlePointer(
-                  value: value.toDouble(),
-                  needleEndWidth: 7,
-                  needleStartWidth: 1,
-                  needleColor: Colors.red,
-                  needleLength: 0.85,
-                  knobStyle: KnobStyle(color: Colors.black, knobRadius: 0.09))
-            ],
-            annotations: <GaugeAnnotation>[
-              GaugeAnnotation(
-                  widget: Container(
-                    child: Image.asset('assets/images/fuel.png',
-                        width: 20.0, height: 20.0),
-                  ),
-                  angle: 85,
-                  positionFactor: 0.45),
-              GaugeAnnotation(
-                  widget: Padding(
-                    padding: const EdgeInsets.only(top: 18.0),
-                    child: Text(
-                      'E',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Times'),
+    return Center(
+      child: SfRadialGauge(
+        axes: <RadialAxis>[
+          RadialAxis(
+              startAngle: 180,
+              endAngle: 0,
+              showTicks: false,
+              showAxisLine: false,
+              showLabels: false,
+              canScaleToFit: true,
+              ranges: <GaugeRange>[
+                GaugeRange(
+                    startValue: 0,
+                    endValue: 10,
+                    startWidth: 10,
+                    endWidth: 12.5,
+                    color: _color1),
+                GaugeRange(
+                    startValue: 12,
+                    endValue: 20,
+                    startWidth: 12.5,
+                    endWidth: 15,
+                    color: _color2),
+                GaugeRange(
+                    startValue: 22,
+                    endValue: 30,
+                    startWidth: 15,
+                    endWidth: 17.5,
+                    color: _color3),
+                GaugeRange(
+                    startValue: 32,
+                    endValue: 40,
+                    startWidth: 17.5,
+                    endWidth: 20,
+                    color: _color4),
+                GaugeRange(
+                    startValue: 42,
+                    endValue: 50,
+                    startWidth: 20,
+                    endWidth: 22.5,
+                    color: _color5),
+                GaugeRange(
+                    startValue: 52,
+                    endValue: 60,
+                    startWidth: 22.5,
+                    endWidth: 25,
+                    color: _color6),
+                GaugeRange(
+                    startValue: 62,
+                    endValue: 70,
+                    startWidth: 25,
+                    endWidth: 27.5,
+                    color: _color7),
+                GaugeRange(
+                    startValue: 72,
+                    endValue: 80,
+                    startWidth: 27.5,
+                    endWidth: 30,
+                    color: _color8),
+                GaugeRange(
+                    startValue: 82,
+                    endValue: 90,
+                    startWidth: 30,
+                    endWidth: 32.5,
+                    color: _color9),
+                GaugeRange(
+                    startValue: 92,
+                    endValue: 100,
+                    startWidth: 32.5,
+                    endWidth: 35,
+                    color: _color10)
+              ],
+              pointers: <GaugePointer>[
+                NeedlePointer(
+                    value: value.toDouble(),
+                    needleEndWidth: 7,
+                    needleStartWidth: 1,
+                    needleColor: Color.fromARGB(255, 197, 197, 197),
+                    needleLength: 0.85,
+                    knobStyle: KnobStyle(color: Colors.black, knobRadius: 0.09))
+              ],
+              annotations: <GaugeAnnotation>[
+                GaugeAnnotation(
+                    widget: Container(
+                      child: Image.asset('assets/images/fuel.png',
+                          width: 20.0, height: 20.0),
                     ),
-                  ),
-                  angle: 175,
-                  positionFactor: 1),
-              GaugeAnnotation(
-                  widget: Padding(
-                    padding: const EdgeInsets.only(top: 18.0),
-                    child: Text(
-                      'F',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Times'),
+                    angle: 85,
+                    positionFactor: 0.45),
+                const GaugeAnnotation(
+                    widget: Padding(
+                      padding: const EdgeInsets.only(top: 18.0),
+                      child: Text(
+                        'E',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Times',
+                            color: Colors.white),
+                      ),
                     ),
-                  ),
-                  angle: 5,
-                  positionFactor: 0.95),
-            ])
-      ],
+                    angle: 175,
+                    positionFactor: 1),
+                const GaugeAnnotation(
+                    widget: Padding(
+                      padding: const EdgeInsets.only(top: 18.0),
+                      child: Text(
+                        'F',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Times',
+                            color: Colors.white),
+                      ),
+                    ),
+                    angle: 5,
+                    positionFactor: 0.95),
+              ])
+        ],
+      ),
     );
   }
 }

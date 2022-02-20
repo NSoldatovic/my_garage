@@ -80,6 +80,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
             ),
           ),
           const Expanded(child: CardList()),
+          addVerticalSpace(30)
         ],
       ),
     ));

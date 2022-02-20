@@ -84,7 +84,7 @@ class _MyAppState extends State<MyApp> {
       DBHelper.insert('user_vehicles', {
         'id': '2222222',
         'year': '2022',
-        'brand': 'MERCEDES BENZ',
+        'brand': 'MERCEDES-BENZ',
         'model': 'C CLASS',
         'description': 'This is an example of a car in a garage',
         'imgUrl':

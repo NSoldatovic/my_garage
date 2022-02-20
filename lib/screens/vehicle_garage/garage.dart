@@ -26,13 +26,15 @@ class _OverviewScreenState extends State<OverviewScreen> {
             shape: const CircleBorder(),
             fixedSize: Size(size.width * 0.12, size.width * 0.12)),
         child: const Icon(Icons.add),
-        onPressed: () => Navigator.of(context).pushNamed('/add_vehicle',
-            arguments: Vehicle(
-                id: 'temp',
-                model: 'model',
-                brand: 'brand',
-                year: 'year',
-                description: 'description')),
+        onPressed: () =>
+            Navigator.of(context).pushNamed('/add_vehicle', arguments: {
+          'vehicle': Vehicle(
+              id: 'temp',
+              model: 'model',
+              brand: 'brand',
+              year: 'year',
+              description: 'description')
+        }),
       ),
       /* appBar: AppBar(
         backgroundColor: Colors.transparent,

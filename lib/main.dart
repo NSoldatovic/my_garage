@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:my_garage/providers/theme_manager.dart';
 import 'package:my_garage/screens/add_vehicle/add_vehicle.dart';
-import 'package:my_garage/screens/splash_screen.dart';
+import 'package:my_garage/screens/loading_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:is_first_run/is_first_run.dart';
 
@@ -12,6 +13,7 @@ import 'utils/db_helper.dart';
 import 'utils/theme_constants.dart';
 
 void main() {
+  FlutterNativeSplash.removeAfter(initialization);
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
       create: (_) => ThemeManager(),
@@ -20,6 +22,10 @@ void main() {
       value: VehicleList(),
     ),
   ], child: const MyApp()));
+}
+
+void initialization(BuildContext context) async {
+  await Future.delayed(const Duration(seconds: 2));
 }
 
 class MyApp extends StatefulWidget {
@@ -31,28 +37,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Map<String, dynamic>>? data;
-  bool _isInit = true;
+  Future? dataFuture;
 
   @override
   void initState() {
     print('NESTOOOO PRVOOO');
 
-    _getData();
+    dataFuture = _getData();
     super.initState();
   }
 
-  /* @override
-  void didChangeDependencies() {
-    if (_isInit) {
-      print('DID RADI');
-      _getData();
-    }
-
-    _isInit = false;
-    super.didChangeDependencies();
-  } */
-
-  Future<void> _getData() async {
+  Future<bool> _getData() async {
     print('STVARNO NE RAZUMEM');
     await _preLoadDB();
     data = await DBHelper.getData('user_vehicles');
@@ -60,6 +55,8 @@ class _MyAppState extends State<MyApp> {
       //print(data);
       context.read<VehicleList>().fetchAndSetPlaces(data!);
     }
+    print('kraj get data');
+    return true;
   }
 
   Future<void> _preLoadDB() async {
@@ -130,12 +127,12 @@ class _MyAppState extends State<MyApp> {
     print('Pali app');
 
     return FutureBuilder(
-        future: Future.delayed(const Duration(seconds: 0)),
+        future: dataFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return const AndroidAppDesign();
           } else {
-            return const SpashScreen();
+            return const LoadingScreen();
           }
         });
   }

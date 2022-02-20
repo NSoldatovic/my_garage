@@ -17,24 +17,33 @@ class DetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as Map;
     final Vehicle vehicle = args['vehicle'];
+    final Function undoDelete = args['undo'];
     final size = MediaQuery.of(context).size;
     final theme = context.watch<ThemeManager>().themeMode;
 
-    void _delete() {
-      context.read<VehicleList>().deleteVehicle(vehicle.id);
+    Future<void> _delete() async {
+      var undo = false;
+      context.read<VehicleList>().deleteFromList(vehicle.id);
       Navigator.of(context).pop();
-    }
 
-    void _updateFav() {
-      context.read<VehicleList>().updateFav(vehicle.id, vehicle.isFav);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: const Text('Vehicle deleted from garage!'),
+        duration: const Duration(seconds: 3),
+        action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            undo = true;
+          },
+        ),
+      ));
+      await Future.delayed(const Duration(seconds: 3, milliseconds: 500));
+      undoDelete(undo, vehicle.id);
     }
 
     void _showDialog() {
-      print('object');
       showDialog(
           context: context,
           builder: (ctx) {
-            print('kao');
             return AlertDialog(
               elevation: 24,
               title: Text('Delete Vehicle'),
@@ -85,7 +94,7 @@ class DetailsScreen extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.pushNamed(context, '/add_vehicle',
-                    arguments: vehicle);
+                    arguments: {'vehicle': vehicle, 'undo': undoDelete});
               },
             ),
             /*  appBar: AppBar(

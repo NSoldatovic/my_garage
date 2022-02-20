@@ -7,8 +7,10 @@ import 'package:provider/provider.dart';
 import '../../../providers/theme_manager.dart';
 
 class VehicleCard extends StatelessWidget {
+  final Function undoDelete;
   Vehicle vehicle;
-  VehicleCard({Key? key, required this.vehicle}) : super(key: key);
+  VehicleCard({Key? key, required this.vehicle, required this.undoDelete})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +23,8 @@ class VehicleCard extends StatelessWidget {
     final theme = context.watch<ThemeManager>().themeMode;
     return GestureDetector(
         onTap: () {
-          Navigator.of(context)
-              .pushNamed('/vehicle_details', arguments: {'vehicle': vehicle});
+          Navigator.of(context).pushNamed('/vehicle_details',
+              arguments: {'vehicle': vehicle, 'undo': undoDelete});
         },
         child: Container(
             margin: const EdgeInsets.symmetric(

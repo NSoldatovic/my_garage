@@ -94,15 +94,18 @@ class _AddVehicleState extends State<AddVehicle> {
   @override
   void didChangeDependencies() {
     if (_isInit) {
-      Vehicle? tempVehicle =
-          ModalRoute.of(context)?.settings.arguments as Vehicle;
+      final args = ModalRoute.of(context)!.settings.arguments as Map;
+      Vehicle tempVehicle = args['vehicle'];
+      ;
       if (tempVehicle.id != 'temp') {
         cameraValue = tempVehicle.imgUrl != null ? 'netImg' : 'camera';
         _editedVehicle = tempVehicle;
+        _imageUrlController.text = _editedVehicle.imgUrl ?? '';
         _storedImage = _editedVehicle.image;
         transmissionValue = _editedVehicle.transmission ?? 'null';
         tiresValue = _editedVehicle.tires ?? 'null';
         fuelTypeValue = _editedVehicle.fuelType ?? 'null';
+        _selectedDate = _editedVehicle.regDate;
       } else {
         _editedVehicle = Vehicle(
             id: 'tempId',
@@ -161,17 +164,27 @@ class _AddVehicleState extends State<AddVehicle> {
     _editedVehicle.regDate = _selectedDate;
 
     if (_editedVehicle.id != 'tempId') {
+      final args = ModalRoute.of(context)!.settings.arguments as Map;
+      final Function undoDelete = args['undo'];
       context.read<VehicleList>().update(_editedVehicle);
       final temp = context.read<VehicleList>().findById(_editedVehicle.id);
       Navigator.of(context).pop();
+
       Navigator.of(context).pop();
-      Navigator.of(context)
-          .pushNamed('/vehicle_details', arguments: {'vehicle': temp});
+
+      Navigator.of(context).pushNamed('/vehicle_details',
+          arguments: {'vehicle': temp, 'undo': undoDelete});
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Vehicle successfully edited!'),
+      ));
     } else {
       //final _newVehiclemap={pickedYear}
       Provider.of<VehicleList>(context, listen: false)
           .addVehicle(_editedVehicle);
       Navigator.of(context).pop();
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Vehicle added to garage!'),
+      ));
     }
   }
 

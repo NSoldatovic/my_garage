@@ -10,6 +10,14 @@ class CardList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void undoDelete(bool undo, id) {
+      if (undo) {
+        context.read<VehicleList>().recoverToList();
+      } else {
+        context.read<VehicleList>().deleteVehicle(id);
+      }
+    }
+
     final vehicleList = context.watch<VehicleList>().items;
     List favList = [];
     for (int i = 0; i < vehicleList.length; i++) {
@@ -39,7 +47,9 @@ class CardList extends StatelessWidget {
                           physics: const BouncingScrollPhysics(),
                           itemCount: favList.length,
                           itemBuilder: (context, index) {
-                            return VehicleCard(vehicle: favList[index]);
+                            return VehicleCard(
+                                vehicle: favList[index],
+                                undoDelete: undoDelete);
                           }),
                     )
                   : const SizedBox(),
@@ -58,7 +68,9 @@ class CardList extends StatelessWidget {
                     itemCount: vehicleList.length,
                     itemBuilder: (context, index) {
                       if (!vehicleList[index].isFav) {
-                        return VehicleCard(vehicle: vehicleList[index]);
+                        return VehicleCard(
+                            vehicle: vehicleList[index],
+                            undoDelete: undoDelete);
                       } else {
                         return const SizedBox();
                       }

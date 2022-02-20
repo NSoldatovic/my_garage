@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:math';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/foundation.dart';
 
@@ -8,6 +9,8 @@ import '../utils/db_helper.dart';
 
 class VehicleList with ChangeNotifier {
   List<Vehicle> _items = [];
+  Vehicle? recoveryVehicle;
+  int? recoveryIndex;
 
   List<Vehicle> get items {
     return [..._items];
@@ -99,15 +102,44 @@ class VehicleList with ChangeNotifier {
   }
 
   Future<void> deleteVehicle(String id) async {
-    int code = await DBHelper.delete('user_vehicles', id);
-    final index = _items.indexWhere((vehicle) => vehicle.id == id);
-    print(code);
-    if (code > 0) {
-      _items.removeAt(index);
-      notifyListeners();
-    }
+    await DBHelper.delete('user_vehicles', id);
 
-    print('obrisi');
+    print('obrisi iz baze');
+  }
+
+  void deleteFromList(String id) {
+    final index = _items.indexWhere((vehicle) => vehicle.id == id);
+    recoveryVehicle = _items[index];
+    recoveryIndex = index;
+
+    _items.removeAt(index);
+    notifyListeners();
+
+    print('obrisi iz list');
+  }
+
+  void recoverToList() {
+    _items.insert(
+        recoveryIndex!,
+        Vehicle(
+            id: recoveryVehicle!.id,
+            model: recoveryVehicle!.model,
+            brand: recoveryVehicle!.brand,
+            year: recoveryVehicle!.year,
+            description: recoveryVehicle!.description,
+            transmission: recoveryVehicle!.transmission,
+            engine: recoveryVehicle!.engine,
+            fuelType: recoveryVehicle!.fuelType,
+            imgUrl: recoveryVehicle!.imgUrl,
+            mileage: recoveryVehicle!.mileage,
+            tires: recoveryVehicle!.tires,
+            regDate: recoveryVehicle!.regDate,
+            fuel: recoveryVehicle!.fuel,
+            isFav: recoveryVehicle!.isFav,
+            image: recoveryVehicle!.image));
+    notifyListeners();
+
+    print('vrati u listu');
   }
 
   Future<void> update(Vehicle editedVehicle) async {

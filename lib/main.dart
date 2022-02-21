@@ -41,28 +41,28 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    print('NESTOOOO PRVOOO');
+    //print('NESTOOOO PRVOOO');
 
     dataFuture = _getData();
     super.initState();
   }
 
   Future<bool> _getData() async {
-    print('STVARNO NE RAZUMEM');
+    //print('STVARNO NE ZNAM STO NE RADI');
     await _preLoadDB();
     data = await DBHelper.getData('user_vehicles');
     if (data.toString() != '[]') {
       //print(data);
       context.read<VehicleList>().fetchAndSetPlaces(data!);
     }
-    print('kraj get data');
+    //print('kraj get data');
     return true;
   }
 
   Future<void> _preLoadDB() async {
     bool firstCall = await IsFirstRun.isFirstCall();
     if (firstCall) {
-      print('Jeste PRVI RUNN DOBRO JE ZA SADa');
+      //print('Jeste PRVI RUNN DOBRO JE ZA SADa');
       DBHelper.insert('user_vehicles', {
         'id': '111111111',
         'year': '2020',
@@ -118,13 +118,13 @@ class _MyAppState extends State<MyApp> {
         'image': 'null',
       });
     } else {
-      print('Neki drugi put');
+      //print('Nije prvi put');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    print('Pali app');
+    //print('Pali app');
 
     return FutureBuilder(
         future: dataFuture,
@@ -146,7 +146,7 @@ class AndroidAppDesign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'My Garage',
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,

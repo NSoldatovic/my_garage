@@ -21,12 +21,12 @@ class SpashScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'My',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 50),
                         ),
-                        Text(
+                        const Text(
                           'Garage',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 60),
@@ -34,7 +34,7 @@ class SpashScreen extends StatelessWidget {
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
+                          children: const [
                             SizedBox(
                               width: 150,
                             ),
@@ -52,7 +52,7 @@ class SpashScreen extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text(
                           'made by',
                           style: TextStyle(

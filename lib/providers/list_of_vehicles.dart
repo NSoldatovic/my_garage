@@ -17,7 +17,7 @@ class VehicleList with ChangeNotifier {
   }
 
   Vehicle findById(String id) {
-    print(_items);
+    //print(_items);
     return _items.firstWhere((vehicle) => vehicle.id == id);
   }
 
@@ -45,7 +45,7 @@ class VehicleList with ChangeNotifier {
     notifyListeners();
     final String temp =
         newVehicle.regDate == null ? 'null' : newVehicle.regDate.toString();
-    print(temp);
+    //print(temp);
 
     DBHelper.insert('user_vehicles', {
       'id': newVehicle.id,
@@ -64,13 +64,13 @@ class VehicleList with ChangeNotifier {
       'isFav': newVehicle.isFav ? 1 : 0,
       'image': newVehicle.image == null ? 'null' : newVehicle.image!.path,
     });
-    print('Dodat auto');
+    //print('Dodat auto');
   }
 
   void fetchAndSetPlaces(List<Map<String, dynamic>> dataList) {
-    print('a1');
+    //print('a1');
 
-    print(dataList.length);
+    //print(dataList.length);
     _items = dataList
         .map(
           (item) => Vehicle(
@@ -96,16 +96,16 @@ class VehicleList with ChangeNotifier {
         )
         .toList();
     notifyListeners();
-    print(_items[0].fuel);
-    print('a2');
+    //print(_items[0].fuel);
+    //print('a2');
 
-    print('fecand set');
+    //print('fecand set');
   }
 
   Future<void> deleteVehicle(String id) async {
     await DBHelper.delete('user_vehicles', id);
 
-    print('obrisi iz baze');
+    //print('obrisi iz baze');
   }
 
   void deleteFromList(String id) {
@@ -116,7 +116,7 @@ class VehicleList with ChangeNotifier {
     _items.removeAt(index);
     notifyListeners();
 
-    print('obrisi iz list');
+    //print('obrisi iz list');
   }
 
   void recoverToList() {
@@ -140,7 +140,7 @@ class VehicleList with ChangeNotifier {
             image: recoveryVehicle!.image));
     notifyListeners();
 
-    print('vrati u listu');
+    //print('vrati u listu');
   }
 
   Future<void> update(Vehicle editedVehicle) async {
@@ -163,6 +163,7 @@ class VehicleList with ChangeNotifier {
         imgUrl: editedVehicle.imgUrl,
         regDate: editedVehicle.regDate);
     _items[index].image = editedVehicle.image;
+
     notifyListeners();
 
     final String temp = editedVehicle.regDate == null
@@ -181,7 +182,7 @@ class VehicleList with ChangeNotifier {
       'tires': editedVehicle.tires ?? 'null',
       'regDate': temp,
       'image': editedVehicle.image == null
-          ? ' null'
+          ? 'null'
           : File(editedVehicle.image!.path),
     };
     int code = await DBHelper.update('user_vehicles', data, editedVehicle.id);
@@ -189,12 +190,12 @@ class VehicleList with ChangeNotifier {
       _items[index] = backup;
     }
 
-    print('update');
+    //print('update');
   }
 
   Future<void> updateFav(String id, bool boolIsFav) async {
     boolIsFav = !boolIsFav;
-    print(_items.lastWhere((element) => element.id == id).isFav);
+    //print(_items.lastWhere((element) => element.id == id).isFav);
     int isFav = boolIsFav ? 1 : 0;
     int code = await DBHelper.update('user_vehicles', {"isFav": isFav}, id);
     //final index = _items.indexWhere((vehicle) => vehicle.id == id);
@@ -203,7 +204,7 @@ class VehicleList with ChangeNotifier {
       _items.lastWhere((element) => element.id == id).isFav = boolIsFav;
       notifyListeners();
     }
-    print(_items.lastWhere((element) => element.id == id).isFav);
-    print('updateFav');
+    //print(_items.lastWhere((element) => element.id == id).isFav);
+    //print('updateFav');
   }
 }

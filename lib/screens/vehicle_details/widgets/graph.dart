@@ -28,13 +28,13 @@ class Graph extends StatelessWidget {
         drawVerticalLine: true,
         getDrawingHorizontalLine: (value) {
           return FlLine(
-            color: Color.fromARGB(255, 129, 129, 129),
+            color: const Color.fromARGB(255, 129, 129, 129),
             strokeWidth: 2,
           );
         },
         getDrawingVerticalLine: (value) {
           return FlLine(
-              color: Color.fromARGB(255, 129, 129, 129),
+              color: const Color.fromARGB(255, 129, 129, 129),
               strokeWidth: 2,
               dashArray: [1, 2]);
         },
@@ -87,8 +87,8 @@ class Graph extends StatelessWidget {
       ),
       borderData: FlBorderData(
           show: true,
-          border:
-              Border.all(color: Color.fromARGB(255, 148, 148, 148), width: 1)),
+          border: Border.all(
+              color: const Color.fromARGB(255, 148, 148, 148), width: 1)),
       minX: 0,
       maxX: 11,
       minY: 0,

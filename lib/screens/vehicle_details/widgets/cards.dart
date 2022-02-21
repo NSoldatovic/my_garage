@@ -31,8 +31,8 @@ class Cards extends StatelessWidget {
                         .inDays
                         .toString()),
             Fuel(fuel: fuel),
-            Avg(),
-            LastService(),
+            const Avg(),
+            const LastService(),
           ],
         ),
       ),
@@ -46,7 +46,6 @@ class Fuel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final theme = context.watch<ThemeManager>().themeMode;
     final colorList = theme == ThemeMode.light
         ? [
@@ -54,7 +53,7 @@ class Fuel extends StatelessWidget {
             Colors.teal,
           ]
         : [
-            Color.fromARGB(255, 20, 86, 161),
+            const Color.fromARGB(255, 20, 86, 161),
             Colors.indigo,
           ];
     return Container(
@@ -66,7 +65,7 @@ class Fuel extends StatelessWidget {
             BoxShadow(
               color: theme == ThemeMode.light
                   ? Colors.grey.withOpacity(0.5)
-                  : Color.fromARGB(255, 63, 63, 63).withOpacity(0.5),
+                  : const Color.fromARGB(255, 63, 63, 63).withOpacity(0.5),
               spreadRadius: 0.2,
               blurRadius: 7,
               offset: const Offset(4, 8),
@@ -75,17 +74,17 @@ class Fuel extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            stops: [0.2, 0.9],
+            stops: const [0.2, 0.9],
             colors: colorList,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(30))),
+          borderRadius: const BorderRadius.all(Radius.circular(30))),
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Fuel',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -106,7 +105,6 @@ class Registration extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final theme = context.watch<ThemeManager>().themeMode;
     final colorList = theme == ThemeMode.light
         ? [
@@ -114,11 +112,11 @@ class Registration extends StatelessWidget {
             Colors.teal,
           ]
         : [
-            Color.fromARGB(255, 20, 86, 161),
+            const Color.fromARGB(255, 20, 86, 161),
             Colors.indigo,
           ];
     return Container(
-      margin: EdgeInsets.only(right: 20, bottom: 15),
+      margin: const EdgeInsets.only(right: 20, bottom: 15),
       width: 140,
       height: 160,
       decoration: BoxDecoration(
@@ -126,7 +124,7 @@ class Registration extends StatelessWidget {
             BoxShadow(
               color: theme == ThemeMode.light
                   ? Colors.grey.withOpacity(0.5)
-                  : Color.fromARGB(255, 63, 63, 63).withOpacity(0.5),
+                  : const Color.fromARGB(255, 63, 63, 63).withOpacity(0.5),
               spreadRadius: 0.2,
               blurRadius: 7,
               offset: const Offset(4, 8),
@@ -135,16 +133,16 @@ class Registration extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            stops: [0.2, 0.9],
+            stops: const [0.2, 0.9],
             colors: colorList,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(30))),
+          borderRadius: const BorderRadius.all(Radius.circular(30))),
       child: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Registration Expires In ',
+            const Text('Registration Expires In ',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
@@ -152,7 +150,7 @@ class Registration extends StatelessWidget {
             Center(
               child: Text(
                 days,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 48,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
@@ -160,7 +158,7 @@ class Registration extends StatelessWidget {
             ),
             Container(
                 alignment: Alignment.bottomRight,
-                child: Text('Days',
+                child: const Text('Days',
                     style: TextStyle(fontSize: 20, color: Colors.white)))
           ],
         ),
@@ -182,11 +180,11 @@ class Avg extends StatelessWidget {
             Colors.teal,
           ]
         : [
-            Color.fromARGB(255, 20, 86, 161),
+            const Color.fromARGB(255, 20, 86, 161),
             Colors.indigo,
           ];
     return Container(
-        margin: EdgeInsets.only(right: 20, bottom: 15),
+        margin: const EdgeInsets.only(right: 20, bottom: 15),
         width: 140,
         height: 160,
         decoration: BoxDecoration(
@@ -194,7 +192,7 @@ class Avg extends StatelessWidget {
               BoxShadow(
                 color: theme == ThemeMode.light
                     ? Colors.grey.withOpacity(0.5)
-                    : Color.fromARGB(255, 63, 63, 63).withOpacity(0.5),
+                    : const Color.fromARGB(255, 63, 63, 63).withOpacity(0.5),
                 spreadRadius: 0.2,
                 blurRadius: 7,
                 offset: const Offset(4, 8),
@@ -203,10 +201,10 @@ class Avg extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              stops: [0.2, 0.9],
+              stops: const [0.2, 0.9],
               colors: colorList,
             ),
-            borderRadius: BorderRadius.all(Radius.circular(30))),
+            borderRadius: const BorderRadius.all(Radius.circular(30))),
         child: Column(
           children: [
             Padding(
@@ -247,7 +245,6 @@ class LastService extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final theme = context.watch<ThemeManager>().themeMode;
     final colorList = theme == ThemeMode.light
         ? [
@@ -255,11 +252,11 @@ class LastService extends StatelessWidget {
             Colors.teal,
           ]
         : [
-            Color.fromARGB(255, 20, 86, 161),
+            const Color.fromARGB(255, 20, 86, 161),
             Colors.indigo,
           ];
     return Container(
-      margin: EdgeInsets.only(right: 20, bottom: 15),
+      margin: const EdgeInsets.only(right: 20, bottom: 15),
       width: 140,
       height: 160,
       decoration: BoxDecoration(
@@ -267,7 +264,7 @@ class LastService extends StatelessWidget {
             BoxShadow(
               color: theme == ThemeMode.light
                   ? Colors.grey.withOpacity(0.5)
-                  : Color.fromARGB(255, 63, 63, 63).withOpacity(0.5),
+                  : const Color.fromARGB(255, 63, 63, 63).withOpacity(0.5),
               spreadRadius: 0.2,
               blurRadius: 7,
               offset: const Offset(4, 8),
@@ -276,19 +273,19 @@ class LastService extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            stops: [0.2, 0.9],
+            stops: const [0.2, 0.9],
             colors: colorList,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(30))),
+          borderRadius: const BorderRadius.all(Radius.circular(30))),
       child: Padding(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
+                  const Text(
                     '95',
                     style: TextStyle(
                         fontSize: 50,
@@ -297,7 +294,7 @@ class LastService extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      Text('days',
+                      const Text('days',
                           style: TextStyle(
                               fontStyle: FontStyle.italic,
                               color: Colors.white)),
@@ -310,7 +307,7 @@ class LastService extends StatelessWidget {
                 "since",
                 style: TextStyle(fontSize: 15),
               ), */
-              Text(
+              const Text(
                 'Since Last Service',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20, color: Colors.white),

@@ -66,13 +66,13 @@ class _OverviewScreenState extends State<OverviewScreen> {
                             fontWeight: FontWeight.bold, fontSize: 40)),
                   ],
                 ),
-                MenuPopup()
+                const MenuPopup()
               ],
             ),
           ),
           addVerticalSpace(8),
           Container(
-            padding: EdgeInsets.only(left: 25),
+            padding: const EdgeInsets.only(left: 25),
             width: size.width * 0.7,
             child: const Divider(
               height: 3,

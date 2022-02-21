@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../../../providers/theme_manager.dart';
 
 class MenuPopup extends StatelessWidget {
+  const MenuPopup({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
@@ -24,7 +26,7 @@ class MenuPopup extends StatelessWidget {
           ),
           Column(
             children: [
-              Text('Dark Mode'),
+              const Text('Dark Mode'),
               Consumer<ThemeManager>(builder: (context, state, child) {
                 return Switch(
                     value: state.themeMode == ThemeMode.dark,

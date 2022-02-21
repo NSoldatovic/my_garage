@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart' as syspaths;
 class ImageInput extends StatefulWidget {
   final Function onSelectImage;
 
-  ImageInput(this.onSelectImage);
+  const ImageInput(this.onSelectImage, {Key? key}) : super(key: key);
 
   @override
   _ImageInputState createState() => _ImageInputState();
@@ -53,22 +53,19 @@ class _ImageInputState extends State<ImageInput> {
                   fit: BoxFit.cover,
                   width: double.infinity,
                 )
-              : Text(
+              : const Text(
                   'No Image Taken',
                   textAlign: TextAlign.center,
                 ),
           alignment: Alignment.center,
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
-        Container(
-          // width: ,
-          child: ElevatedButton.icon(
-            icon: Icon(Icons.camera),
-            label: Text('Take Picture'),
-            onPressed: _takePicture,
-          ),
+        ElevatedButton.icon(
+          icon: const Icon(Icons.camera),
+          label: const Text('Take Picture'),
+          onPressed: _takePicture,
         ),
       ],
     );

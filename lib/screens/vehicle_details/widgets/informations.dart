@@ -11,11 +11,10 @@ class Informations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final theme = context.watch<ThemeManager>().themeMode;
     final color = theme == ThemeMode.light
-        ? Color.fromARGB(255, 110, 110, 110)
-        : Color.fromARGB(255, 218, 218, 218);
+        ? const Color.fromARGB(255, 110, 110, 110)
+        : const Color.fromARGB(255, 218, 218, 218);
 
     return Padding(
       padding: const EdgeInsets.only(right: 20, left: 20, top: 20, bottom: 20),
@@ -73,12 +72,12 @@ class Informations extends StatelessWidget {
 }
 
 class Info extends StatelessWidget {
-  String title;
-  String? value;
+  final String title;
+  final String? value;
   final double height;
-  Icon icon;
+  final Icon icon;
 
-  Info(
+  const Info(
       {Key? key,
       required this.title,
       required this.icon,
@@ -92,43 +91,40 @@ class Info extends StatelessWidget {
     final isLight = theme == ThemeMode.light;
     final size = MediaQuery.of(context).size;
 
-    return Container(
-      // padding: EdgeInsets.only(left: 0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            width: size.width * 0.27,
-            height: size.height * height,
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: Row(
-                children: [
-                  icon,
-                  Text(
-                    title,
-                    style: TextStyle(
-                        color: isLight
-                            ? Color.fromARGB(255, 110, 110, 110)
-                            : Color.fromARGB(255, 218, 218, 218)),
-                  ),
-                ],
-              ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: size.width * 0.27,
+          height: size.height * height,
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Row(
+              children: [
+                icon,
+                Text(
+                  title,
+                  style: TextStyle(
+                      color: isLight
+                          ? const Color.fromARGB(255, 110, 110, 110)
+                          : const Color.fromARGB(255, 218, 218, 218)),
+                ),
+              ],
             ),
           ),
-          SizedBox(
-            width: size.width * 0.25,
-            height: size.height * 0.023,
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: Text(
-                value ??= '-',
-              ),
+        ),
+        SizedBox(
+          width: size.width * 0.25,
+          height: size.height * 0.023,
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Text(
+              value == null ? '-' : value!,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

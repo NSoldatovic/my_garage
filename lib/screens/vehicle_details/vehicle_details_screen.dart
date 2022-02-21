@@ -1,6 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:my_garage/utils/helper_widgets.dart';
+
 import 'package:provider/provider.dart';
 import '../../models/vehicle.dart';
 import '../../providers/list_of_vehicles.dart';
@@ -54,16 +54,16 @@ class DetailsScreen extends StatelessWidget {
               : vehicle.model;
         }
         length = 0;
-        print(temp);
+        //print(temp);
         for (int i = 0; i < temp.length; i++) {
           if (temp[i] == ' ') {
             length += 0.37;
           } else {
             if (temp[i] == '-') {
-              print('ALOOOO BRE');
+              //print('ALOOOO BRE');
               length += 0.5;
             } else {
-              print(length);
+              //print(length);
               length++;
             }
           }
@@ -71,7 +71,7 @@ class DetailsScreen extends StatelessWidget {
             length += 0.8;
           }
         }
-        print(length);
+        //print(length);
         return length * 16.1;
       }
     }
@@ -82,8 +82,9 @@ class DetailsScreen extends StatelessWidget {
           builder: (ctx) {
             return AlertDialog(
               elevation: 24,
-              title: Text('Delete Vehicle'),
-              content: Text('Are you sure you want to delete this vehicle?'),
+              title: const Text('Delete Vehicle'),
+              content:
+                  const Text('Are you sure you want to delete this vehicle?'),
               actions: [
                 TextButton(
                   child: Text(
@@ -119,7 +120,7 @@ class DetailsScreen extends StatelessWidget {
               child: SizedBox(
                 width: 150,
                 child: Row(
-                  children: [
+                  children: const [
                     Icon(Icons.edit_outlined),
                     Text(
                       '  Edit Vehicle',
@@ -146,7 +147,7 @@ class DetailsScreen extends StatelessWidget {
               children: [
                 Stack(
                   children: [
-                    Container(
+                    SizedBox(
                       width: size.width,
                       height: size.height * 0.3,
                       child: Hero(
@@ -170,7 +171,7 @@ class DetailsScreen extends StatelessWidget {
                         width: size.width,
                         top: 15,
                         child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -206,7 +207,7 @@ class DetailsScreen extends StatelessWidget {
                             BlurryContainer(
                               blur: 12,
                               borderRadius: BorderRadius.circular(14),
-                              padding: EdgeInsets.all(3),
+                              padding: const EdgeInsets.all(3),
                               width: _calculateWidth(
                                   vehicle.year.length.toDouble(), true),
                               height: 25,
@@ -219,8 +220,9 @@ class DetailsScreen extends StatelessWidget {
                                         /* backgroundColor:
                                           Color.fromARGB(255, 50, 51, 51), */
                                         color: theme == ThemeMode.light
-                                            ? Color.fromARGB(255, 112, 181, 190)
-                                            : Color.fromARGB(
+                                            ? const Color.fromARGB(
+                                                255, 112, 181, 190)
+                                            : const Color.fromARGB(
                                                 255, 126, 138, 241))),
                               ),
                             ),
@@ -228,7 +230,7 @@ class DetailsScreen extends StatelessWidget {
                                 ? BlurryContainer(
                                     blur: 12,
                                     borderRadius: BorderRadius.circular(14),
-                                    padding: EdgeInsets.all(5),
+                                    padding: const EdgeInsets.all(5),
                                     width: _calculateWidth(
                                         (vehicle.brand.length +
                                                 vehicle.model.length)
@@ -298,11 +300,11 @@ class DetailsScreen extends StatelessWidget {
                       bottom: 15,
                       right: 15,
                       child: BorderIcon(
-                        padding: EdgeInsets.all(0),
+                        padding: const EdgeInsets.all(0),
                         width: 45,
                         height: 45,
                         child: Favorite(
-                          isFav: vehicle.isFav,
+                          isFavTemp: vehicle.isFav,
                           id: vehicle.id,
                         ),
                       ),
@@ -328,9 +330,10 @@ class DetailsScreen extends StatelessWidget {
 }
 
 class Favorite extends StatefulWidget {
-  Favorite({Key? key, required this.isFav, required this.id}) : super(key: key);
+  const Favorite({Key? key, required this.isFavTemp, required this.id})
+      : super(key: key);
 
-  bool isFav;
+  final bool isFavTemp;
   final String id;
 
   @override
@@ -338,17 +341,23 @@ class Favorite extends StatefulWidget {
 }
 
 class _FavoriteState extends State<Favorite> {
+  int i = 0;
+  late bool isFav;
   @override
   Widget build(BuildContext context) {
+    if (i == 0) {
+      isFav = widget.isFavTemp;
+    }
     void _updateFav() {
+      i = 1;
+      context.read<VehicleList>().updateFav(widget.id, isFav);
       setState(() {
-        context.read<VehicleList>().updateFav(widget.id, widget.isFav);
-        widget.isFav = !widget.isFav;
+        isFav = !isFav;
       });
     }
 
     return IconButton(
-      icon: widget.isFav
+      icon: isFav
           ? const Icon(Icons.favorite)
           : const Icon(Icons.favorite_border_rounded),
       color: Colors.red,

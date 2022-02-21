@@ -20,9 +20,9 @@ class BorderIcon extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+            borderRadius: const BorderRadius.all(Radius.circular(15.0)),
             border: Border.all(
-                color: Color.fromRGBO(141, 141, 141, 1.0).withAlpha(40),
+                color: const Color.fromRGBO(141, 141, 141, 1.0).withAlpha(40),
                 width: 2)),
         padding: padding ?? const EdgeInsets.all(8.0),
         child: Center(child: child));

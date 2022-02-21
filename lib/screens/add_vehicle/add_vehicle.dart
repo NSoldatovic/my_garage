@@ -57,7 +57,7 @@ class _AddVehicleState extends State<AddVehicle> {
     final savedImage = await _storedImage?.copy('${appDir.path}/$fileName');
 
     _pickedImage = savedImage;
-    print(_pickedImage);
+    //print(_pickedImage);
   }
 
   @override
@@ -96,10 +96,12 @@ class _AddVehicleState extends State<AddVehicle> {
     if (_isInit) {
       final args = ModalRoute.of(context)!.settings.arguments as Map;
       Vehicle tempVehicle = args['vehicle'];
-      ;
+
       if (tempVehicle.id != 'temp') {
         cameraValue = tempVehicle.imgUrl != null ? 'netImg' : 'camera';
+
         _editedVehicle = tempVehicle;
+
         _imageUrlController.text = _editedVehicle.imgUrl ?? '';
         _storedImage = _editedVehicle.image;
         transmissionValue = _editedVehicle.transmission ?? 'null';
@@ -145,7 +147,7 @@ class _AddVehicleState extends State<AddVehicle> {
         _selectedDate = pickedDate;
       });
     });
-    print('...');
+    //print('...');
   }
 
   void _saveForm() {
@@ -160,12 +162,13 @@ class _AddVehicleState extends State<AddVehicle> {
 
     _editedVehicle.tires = tiresValue == 'null' ? null : tiresValue;
     _editedVehicle.fuelType = fuelTypeValue == 'null' ? null : fuelTypeValue;
-    print(_selectedDate);
+    //print(_selectedDate);
     _editedVehicle.regDate = _selectedDate;
 
     if (_editedVehicle.id != 'tempId') {
       final args = ModalRoute.of(context)!.settings.arguments as Map;
       final Function undoDelete = args['undo'];
+
       context.read<VehicleList>().update(_editedVehicle);
       final temp = context.read<VehicleList>().findById(_editedVehicle.id);
       Navigator.of(context).pop();
@@ -191,7 +194,7 @@ class _AddVehicleState extends State<AddVehicle> {
   @override
   Widget build(BuildContext context) {
     /* if(_editedVehicle==null) {
-      print('nesto ne valja');
+      //print('nesto ne valja');
       Navigator.of(context).pop();
     } */
     final size = MediaQuery.of(context).size;
@@ -222,16 +225,18 @@ class _AddVehicleState extends State<AddVehicle> {
                     IconButton(
                         onPressed: () => Navigator.of(context).pop(),
                         iconSize: 30,
-                        icon: Icon(Icons.arrow_back_rounded)),
+                        icon: const Icon(Icons.arrow_back_rounded)),
                     _isNew
-                        ? Text('Add Vehicle',
+                        ? const Text('Add Vehicle',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 25))
-                        : Text('Edit Vehicle',
+                        : const Text('Edit Vehicle',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 25)),
                     IconButton(
-                      icon: _isNew ? Icon(Icons.add) : Icon(Icons.save),
+                      icon: _isNew
+                          ? const Icon(Icons.add)
+                          : const Icon(Icons.save),
                       iconSize: 33,
                       onPressed: _saveForm,
                     ),
@@ -244,13 +249,13 @@ class _AddVehicleState extends State<AddVehicle> {
                   child: Form(
                     key: _form,
                     child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text('Required',
+                          const Text('Required',
                               style: TextStyle(
                                   fontFamily: 'SGotham', fontSize: 18)),
                           Row(
@@ -261,7 +266,7 @@ class _AddVehicleState extends State<AddVehicle> {
                                   initialValue:
                                       _isNew ? '' : _editedVehicle.brand,
                                   decoration:
-                                      InputDecoration(labelText: 'Brand'),
+                                      const InputDecoration(labelText: 'Brand'),
                                   textInputAction: TextInputAction.next,
                                   onFieldSubmitted: (_) {
                                     FocusScope.of(context)
@@ -279,7 +284,8 @@ class _AddVehicleState extends State<AddVehicle> {
                                         year: _editedVehicle.year,
                                         model: _editedVehicle.model,
                                         description: _editedVehicle.description,
-                                        id: _editedVehicle.id);
+                                        id: _editedVehicle.id,
+                                        isFav: _editedVehicle.isFav);
                                   },
                                 ),
                               ),
@@ -322,7 +328,8 @@ class _AddVehicleState extends State<AddVehicle> {
                                           model: _editedVehicle.model,
                                           description:
                                               _editedVehicle.description,
-                                          id: _editedVehicle.id);
+                                          id: _editedVehicle.id,
+                                          isFav: _editedVehicle.isFav);
                                     }),
                               ),
                             ],
@@ -338,8 +345,8 @@ class _AddVehicleState extends State<AddVehicle> {
                                     TextFormField(
                                         initialValue:
                                             _isNew ? '' : _editedVehicle.model,
-                                        decoration:
-                                            InputDecoration(labelText: 'Model'),
+                                        decoration: const InputDecoration(
+                                            labelText: 'Model'),
                                         textInputAction: TextInputAction.next,
                                         focusNode: _modelFocusNode,
                                         onFieldSubmitted: (_) {
@@ -359,7 +366,8 @@ class _AddVehicleState extends State<AddVehicle> {
                                               model: value!.toUpperCase(),
                                               description:
                                                   _editedVehicle.description,
-                                              id: _editedVehicle.id);
+                                              id: _editedVehicle.id,
+                                              isFav: _editedVehicle.isFav);
                                         }),
                                     addVerticalSpace(10),
                                   ],
@@ -372,7 +380,7 @@ class _AddVehicleState extends State<AddVehicle> {
                                     child: FittedBox(
                                         fit: BoxFit.fill,
                                         child: Column(
-                                          children: [
+                                          children: const [
                                             Text('Generate'),
                                             Text('Description'),
                                           ],
@@ -384,7 +392,7 @@ class _AddVehicleState extends State<AddVehicle> {
                           TextFormField(
                             controller: generatedDescription,
                             decoration:
-                                InputDecoration(labelText: 'Description'),
+                                const InputDecoration(labelText: 'Description'),
                             maxLines: 4,
                             keyboardType: TextInputType.multiline,
                             focusNode: _descriptionFocusNode,
@@ -403,7 +411,8 @@ class _AddVehicleState extends State<AddVehicle> {
                                   year: _editedVehicle.year,
                                   model: _editedVehicle.model,
                                   description: value!,
-                                  id: _editedVehicle.id);
+                                  id: _editedVehicle.id,
+                                  isFav: _editedVehicle.isFav);
                             },
                           ),
                           addVerticalSpace(25),
@@ -414,15 +423,14 @@ class _AddVehicleState extends State<AddVehicle> {
                                   style: TextStyle(
                                       fontFamily: 'SGotham', fontSize: 18)),
                               addVerticalSpace(20),
-                              Container(
-                                  child: Switch(
+                              Switch(
                                 value: opt,
                                 onChanged: (value) {
                                   setState(() {
                                     opt = value;
                                   });
                                 },
-                              )),
+                              ),
                             ],
                           ),
                           if (opt)
@@ -512,31 +520,34 @@ class _AddVehicleState extends State<AddVehicle> {
                                           const Icon(Icons.keyboard_arrow_down),
                                     ),
                                     cameraValue == 'camera'
-                                        ? Container(
+                                        ? SizedBox(
                                             width: size.width * 0.5,
                                             child: ElevatedButton.icon(
-                                              icon: Icon(Icons.camera),
-                                              label: Text('Take Picture'),
+                                              icon: const Icon(Icons.camera),
+                                              label: const Text('Take Picture'),
                                               onPressed: () =>
                                                   _takePicture('camera'),
                                             ),
                                           )
                                         : cameraValue == 'gallery'
-                                            ? Container(
+                                            ? SizedBox(
                                                 width: size.width * 0.5,
                                                 child: ElevatedButton.icon(
-                                                  icon: Icon(Icons.file_copy),
-                                                  label:
-                                                      Text('Pick From Gallery'),
+                                                  icon: const Icon(
+                                                      Icons.file_copy),
+                                                  label: const Text(
+                                                      'Pick From Gallery'),
                                                   onPressed: () =>
                                                       _takePicture('gallery'),
                                                 ),
                                               )
-                                            : Container(
+                                            : SizedBox(
                                                 width: size.width * 0.5,
                                                 child: TextFormField(
-                                                  decoration: InputDecoration(
-                                                      labelText: 'Image URL'),
+                                                  decoration:
+                                                      const InputDecoration(
+                                                          labelText:
+                                                              'Image URL'),
                                                   keyboardType:
                                                       TextInputType.url,
                                                   //textInputAction: TextInputAction.done,
@@ -564,8 +575,8 @@ class _AddVehicleState extends State<AddVehicle> {
                                                     return null;
                                                   },
                                                   onSaved: (value) {
-                                                    print('sace');
-                                                    print(value);
+                                                    //print('sace');
+                                                    //print(value);
                                                     if (value != '') {
                                                       _editedVehicle.imgUrl =
                                                           value;
@@ -611,7 +622,7 @@ class _AddVehicleState extends State<AddVehicle> {
                                           transmissionValue =
                                               newValue.toString();
 
-                                          print(transmissionValue);
+                                          //print(transmissionValue);
                                         });
                                       },
                                       icon:
@@ -648,7 +659,7 @@ class _AddVehicleState extends State<AddVehicle> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Container(
+                                SizedBox(
                                   width: size.width * 0.4,
                                   child: TextFormField(
                                       initialValue:
@@ -754,16 +765,14 @@ class _AddVehicleState extends State<AddVehicle> {
                                   ],
                                 ),
                                 addHorizontalSpace(20),
-                                Container(
+                                SizedBox(
                                   height: size.height * 0.12,
                                   width: size.width * 0.4,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
-                                      Container(
-                                          //alignment: Alignment.topLeft,
-                                          child: Text('Registration Date')),
+                                      const Text('Registration Date'),
                                       OutlinedButton(
                                         child: const Text(
                                           'Choose Date',

@@ -1,9 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:my_garage/models/vehicle.dart';
 import 'package:my_garage/providers/list_of_vehicles.dart';
-import 'package:my_garage/utils/helper_widgets.dart';
+
 import 'package:provider/provider.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 
@@ -11,8 +9,8 @@ import '../../../providers/theme_manager.dart';
 
 class VehicleCard extends StatelessWidget {
   final Function undoDelete;
-  Vehicle vehicle;
-  VehicleCard({Key? key, required this.vehicle, required this.undoDelete})
+  final Vehicle vehicle;
+  const VehicleCard({Key? key, required this.vehicle, required this.undoDelete})
       : super(key: key);
 
   @override
@@ -30,16 +28,16 @@ class VehicleCard extends StatelessWidget {
               : vehicle.model;
         }
         length = 0;
-        print(temp);
+        //print(temp);
         for (int i = 0; i < temp.length; i++) {
           if (temp[i] == ' ') {
             length += 0.37;
           } else {
             if (temp[i] == '-') {
-              print('ALOOOO BRE');
+              //print('ALOOOO BRE');
               length += 0.5;
             } else {
-              print(length);
+              //print(length);
               length++;
             }
           }
@@ -47,7 +45,7 @@ class VehicleCard extends StatelessWidget {
             length += 0.8;
           }
         }
-        print(length);
+        //print(length);
         return length * 16.1;
       }
     }
@@ -99,8 +97,8 @@ class VehicleCard extends StatelessWidget {
                       right: 20,
                       child: IconButton(
                         icon: vehicle.isFav
-                            ? Icon(Icons.favorite)
-                            : Icon(Icons.favorite_border_rounded),
+                            ? const Icon(Icons.favorite)
+                            : const Icon(Icons.favorite_border_rounded),
                         color: Colors.white,
                         onPressed: _updateFav,
                       )),
@@ -113,7 +111,7 @@ class VehicleCard extends StatelessWidget {
                           BlurryContainer(
                             blur: 12,
                             borderRadius: BorderRadius.circular(14),
-                            padding: EdgeInsets.all(4),
+                            padding: const EdgeInsets.all(4),
                             width: _calculateWidth(
                                 vehicle.year.length.toDouble(), true),
                             height: 25,
@@ -126,8 +124,9 @@ class VehicleCard extends StatelessWidget {
                                       /* backgroundColor:
                                           Color.fromARGB(255, 50, 51, 51), */
                                       color: theme == ThemeMode.light
-                                          ? Color.fromARGB(255, 112, 181, 190)
-                                          : Color.fromARGB(
+                                          ? const Color.fromARGB(
+                                              255, 112, 181, 190)
+                                          : const Color.fromARGB(
                                               255, 126, 138, 241))),
                             ),
                           ),
@@ -135,7 +134,7 @@ class VehicleCard extends StatelessWidget {
                               ? BlurryContainer(
                                   blur: 12,
                                   borderRadius: BorderRadius.circular(14),
-                                  padding: EdgeInsets.all(5),
+                                  padding: const EdgeInsets.all(5),
                                   width: _calculateWidth(
                                       (vehicle.brand.length +
                                               vehicle.model.length)

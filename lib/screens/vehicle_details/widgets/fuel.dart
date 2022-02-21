@@ -5,151 +5,150 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 class FuelMeter extends StatelessWidget {
   final int value;
 
-  FuelMeter({Key? key, required this.value}) : super(key: key);
-
-  void _onFirstRangeColorChanged() {
-    _color1 = Colors.red;
-    _color2 = Colors.black;
-    _color3 = Colors.black;
-    _color4 = Colors.black;
-    _color5 = Colors.black;
-    _color6 = Colors.black;
-    _color7 = Colors.black;
-    _color8 = Colors.black;
-    _color9 = Colors.black;
-    _color10 = Colors.black;
-  }
-
-  void _onSecondRangeColorChanged() {
-    _color1 = Colors.black;
-    _color2 = Colors.red;
-    _color3 = Colors.black;
-    _color4 = Colors.black;
-    _color5 = Colors.black;
-    _color6 = Colors.black;
-    _color7 = Colors.black;
-    _color8 = Colors.black;
-    _color9 = Colors.black;
-    _color10 = Colors.black;
-  }
-
-  void _onThirdRangeColorChanged() {
-    _color1 = Colors.black;
-    _color2 = Colors.black;
-    _color3 = Colors.red;
-    _color4 = Colors.black;
-    _color5 = Colors.black;
-    _color6 = Colors.black;
-    _color7 = Colors.black;
-    _color8 = Colors.black;
-    _color9 = Colors.black;
-    _color10 = Colors.black;
-  }
-
-  void _onFourthRangeColorChanged() {
-    _color1 = Colors.black;
-    _color2 = Colors.black;
-    _color3 = Colors.black;
-    _color4 = Colors.red;
-    _color5 = Colors.black;
-    _color6 = Colors.black;
-    _color7 = Colors.black;
-    _color8 = Colors.black;
-    _color9 = Colors.black;
-    _color10 = Colors.black;
-  }
-
-  void _onFifthRangeColorChanged() {
-    _color1 = Colors.black;
-    _color2 = Colors.black;
-    _color3 = Colors.black;
-    _color4 = Colors.black;
-    _color5 = Colors.red;
-    _color6 = Colors.black;
-    _color7 = Colors.black;
-    _color8 = Colors.black;
-    _color9 = Colors.black;
-    _color10 = Colors.black;
-  }
-
-  void _onSixthRangeColorChanged() {
-    _color1 = Colors.black;
-    _color2 = Colors.black;
-    _color3 = Colors.black;
-    _color4 = Colors.black;
-    _color5 = Colors.black;
-    _color6 = Colors.red;
-    _color7 = Colors.black;
-    _color8 = Colors.black;
-    _color9 = Colors.black;
-    _color10 = Colors.black;
-  }
-
-  void _onSeventhRangeColorChanged() {
-    _color1 = Colors.black;
-    _color2 = Colors.black;
-    _color3 = Colors.black;
-    _color4 = Colors.black;
-    _color5 = Colors.black;
-    _color6 = Colors.black;
-    _color7 = Colors.red;
-    _color8 = Colors.black;
-    _color9 = Colors.black;
-    _color10 = Colors.black;
-  }
-
-  void _onEighthRangeColorChanged() {
-    _color1 = Colors.black;
-    _color2 = Colors.black;
-    _color3 = Colors.black;
-    _color4 = Colors.black;
-    _color5 = Colors.black;
-    _color6 = Colors.black;
-    _color7 = Colors.black;
-    _color8 = Colors.red;
-    _color9 = Colors.black;
-    _color10 = Colors.black;
-  }
-
-  void _onNinethRangeColorChanged() {
-    _color1 = Colors.black;
-    _color2 = Colors.black;
-    _color3 = Colors.black;
-    _color4 = Colors.black;
-    _color5 = Colors.black;
-    _color6 = Colors.black;
-    _color7 = Colors.black;
-    _color8 = Colors.black;
-    _color9 = Colors.red;
-    _color10 = Colors.black;
-  }
-
-  void _onTenthRangeColorChanged() {
-    _color1 = Colors.black;
-    _color2 = Colors.black;
-    _color3 = Colors.black;
-    _color4 = Colors.black;
-    _color5 = Colors.black;
-    _color6 = Colors.black;
-    _color7 = Colors.black;
-    _color8 = Colors.black;
-    _color9 = Colors.black;
-    _color10 = Colors.red;
-  }
-
-  Color _color1 = Colors.red;
-  Color _color2 = Colors.black;
-  Color _color3 = Colors.black;
-  Color _color4 = Colors.black;
-  Color _color5 = Colors.black;
-  Color _color6 = Colors.black;
-  Color _color7 = Colors.black;
-  Color _color8 = Colors.black;
-  Color _color9 = Colors.black;
-  Color _color10 = Colors.black;
+  const FuelMeter({Key? key, required this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Color _color1 = Colors.red;
+    Color _color2 = Colors.black;
+    Color _color3 = Colors.black;
+    Color _color4 = Colors.black;
+    Color _color5 = Colors.black;
+    Color _color6 = Colors.black;
+    Color _color7 = Colors.black;
+    Color _color8 = Colors.black;
+    Color _color9 = Colors.black;
+    Color _color10 = Colors.black;
+    void _onFirstRangeColorChanged() {
+      _color1 = Colors.red;
+      _color2 = Colors.black;
+      _color3 = Colors.black;
+      _color4 = Colors.black;
+      _color5 = Colors.black;
+      _color6 = Colors.black;
+      _color7 = Colors.black;
+      _color8 = Colors.black;
+      _color9 = Colors.black;
+      _color10 = Colors.black;
+    }
+
+    void _onSecondRangeColorChanged() {
+      _color1 = Colors.black;
+      _color2 = Colors.red;
+      _color3 = Colors.black;
+      _color4 = Colors.black;
+      _color5 = Colors.black;
+      _color6 = Colors.black;
+      _color7 = Colors.black;
+      _color8 = Colors.black;
+      _color9 = Colors.black;
+      _color10 = Colors.black;
+    }
+
+    void _onThirdRangeColorChanged() {
+      _color1 = Colors.black;
+      _color2 = Colors.black;
+      _color3 = Colors.red;
+      _color4 = Colors.black;
+      _color5 = Colors.black;
+      _color6 = Colors.black;
+      _color7 = Colors.black;
+      _color8 = Colors.black;
+      _color9 = Colors.black;
+      _color10 = Colors.black;
+    }
+
+    void _onFourthRangeColorChanged() {
+      _color1 = Colors.black;
+      _color2 = Colors.black;
+      _color3 = Colors.black;
+      _color4 = Colors.red;
+      _color5 = Colors.black;
+      _color6 = Colors.black;
+      _color7 = Colors.black;
+      _color8 = Colors.black;
+      _color9 = Colors.black;
+      _color10 = Colors.black;
+    }
+
+    void _onFifthRangeColorChanged() {
+      _color1 = Colors.black;
+      _color2 = Colors.black;
+      _color3 = Colors.black;
+      _color4 = Colors.black;
+      _color5 = Colors.red;
+      _color6 = Colors.black;
+      _color7 = Colors.black;
+      _color8 = Colors.black;
+      _color9 = Colors.black;
+      _color10 = Colors.black;
+    }
+
+    void _onSixthRangeColorChanged() {
+      _color1 = Colors.black;
+      _color2 = Colors.black;
+      _color3 = Colors.black;
+      _color4 = Colors.black;
+      _color5 = Colors.black;
+      _color6 = Colors.red;
+      _color7 = Colors.black;
+      _color8 = Colors.black;
+      _color9 = Colors.black;
+      _color10 = Colors.black;
+    }
+
+    void _onSeventhRangeColorChanged() {
+      _color1 = Colors.black;
+      _color2 = Colors.black;
+      _color3 = Colors.black;
+      _color4 = Colors.black;
+      _color5 = Colors.black;
+      _color6 = Colors.black;
+      _color7 = Colors.red;
+      _color8 = Colors.black;
+      _color9 = Colors.black;
+      _color10 = Colors.black;
+    }
+
+    void _onEighthRangeColorChanged() {
+      _color1 = Colors.black;
+      _color2 = Colors.black;
+      _color3 = Colors.black;
+      _color4 = Colors.black;
+      _color5 = Colors.black;
+      _color6 = Colors.black;
+      _color7 = Colors.black;
+      _color8 = Colors.red;
+      _color9 = Colors.black;
+      _color10 = Colors.black;
+    }
+
+    void _onNinethRangeColorChanged() {
+      _color1 = Colors.black;
+      _color2 = Colors.black;
+      _color3 = Colors.black;
+      _color4 = Colors.black;
+      _color5 = Colors.black;
+      _color6 = Colors.black;
+      _color7 = Colors.black;
+      _color8 = Colors.black;
+      _color9 = Colors.red;
+      _color10 = Colors.black;
+    }
+
+    void _onTenthRangeColorChanged() {
+      _color1 = Colors.black;
+      _color2 = Colors.black;
+      _color3 = Colors.black;
+      _color4 = Colors.black;
+      _color5 = Colors.black;
+      _color6 = Colors.black;
+      _color7 = Colors.black;
+      _color8 = Colors.black;
+      _color9 = Colors.black;
+      _color10 = Colors.red;
+    }
+
     if (value >= 0 && value <= 10) {
       _onFirstRangeColorChanged();
     } else if (value >= 10 && value <= 20) {
@@ -249,9 +248,10 @@ class FuelMeter extends StatelessWidget {
                     value: value.toDouble(),
                     needleEndWidth: 7,
                     needleStartWidth: 1,
-                    needleColor: Color.fromARGB(255, 197, 197, 197),
+                    needleColor: const Color.fromARGB(255, 197, 197, 197),
                     needleLength: 0.85,
-                    knobStyle: KnobStyle(color: Colors.black, knobRadius: 0.09))
+                    knobStyle:
+                        const KnobStyle(color: Colors.black, knobRadius: 0.09))
               ],
               annotations: <GaugeAnnotation>[
                 GaugeAnnotation(

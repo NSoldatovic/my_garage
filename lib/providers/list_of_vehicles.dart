@@ -46,6 +46,7 @@ class VehicleList with ChangeNotifier {
     final String temp =
         newVehicle.regDate == null ? 'null' : newVehicle.regDate.toString();
     print(temp);
+
     DBHelper.insert('user_vehicles', {
       'id': newVehicle.id,
       'year': newVehicle.year,
@@ -179,6 +180,9 @@ class VehicleList with ChangeNotifier {
       'engine': editedVehicle.engine ?? 'null',
       'tires': editedVehicle.tires ?? 'null',
       'regDate': temp,
+      'image': editedVehicle.image == null
+          ? ' null'
+          : File(editedVehicle.image!.path),
     };
     int code = await DBHelper.update('user_vehicles', data, editedVehicle.id);
     if (code < 1) {

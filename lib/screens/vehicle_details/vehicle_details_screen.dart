@@ -156,10 +156,14 @@ class DetailsScreen extends StatelessWidget {
                                 vehicle.image!,
                                 fit: BoxFit.fill,
                               )
-                            : Image(
-                                fit: BoxFit.fill,
-                                image: NetworkImage(vehicle.imgUrl ??
-                                    'https://thumbs.dreamstime.com/b/illustration-hand-drawn-car-white-lines-black-background-abstract-art-objects-isolated-shape-design-auto-148327343.jpg')),
+                            : vehicle.imgUrl != null
+                                ? Image(
+                                    fit: BoxFit.fill,
+                                    image: NetworkImage(vehicle.imgUrl!))
+                                : Image.asset(
+                                    'assets/images/noImg.jpg',
+                                    fit: BoxFit.fill,
+                                  ),
                       ),
                     ),
                     Positioned(

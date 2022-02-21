@@ -174,7 +174,7 @@ class Avg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    //final size = MediaQuery.of(context).size;
     final theme = context.watch<ThemeManager>().themeMode;
     final colorList = theme == ThemeMode.light
         ? [

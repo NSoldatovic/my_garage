@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class FuelMeter extends StatelessWidget {
   final int value;
+
   FuelMeter({Key? key, required this.value}) : super(key: key);
 
   void _onFirstRangeColorChanged() {
@@ -253,7 +255,7 @@ class FuelMeter extends StatelessWidget {
               ],
               annotations: <GaugeAnnotation>[
                 GaugeAnnotation(
-                    widget: Container(
+                    widget: SizedBox(
                       child: Image.asset('assets/images/fuel.png',
                           width: 20.0, height: 20.0),
                     ),
@@ -261,7 +263,7 @@ class FuelMeter extends StatelessWidget {
                     positionFactor: 0.45),
                 const GaugeAnnotation(
                     widget: Padding(
-                      padding: const EdgeInsets.only(top: 18.0),
+                      padding: EdgeInsets.only(top: 18.0),
                       child: Text(
                         'E',
                         style: TextStyle(
@@ -275,7 +277,7 @@ class FuelMeter extends StatelessWidget {
                     positionFactor: 1),
                 const GaugeAnnotation(
                     widget: Padding(
-                      padding: const EdgeInsets.only(top: 18.0),
+                      padding: EdgeInsets.only(top: 18.0),
                       child: Text(
                         'F',
                         style: TextStyle(

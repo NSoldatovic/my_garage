@@ -84,10 +84,14 @@ class VehicleCard extends StatelessWidget {
                                   vehicle.image!,
                                   fit: BoxFit.fill,
                                 )
-                              : Image(
-                                  fit: BoxFit.fill,
-                                  image: NetworkImage(vehicle.imgUrl ??
-                                      'https://thumbs.dreamstime.com/b/illustration-hand-drawn-car-white-lines-black-background-abstract-art-objects-isolated-shape-design-auto-148327343.jpg')),
+                              : vehicle.imgUrl != null
+                                  ? Image(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(vehicle.imgUrl!))
+                                  : Image.asset(
+                                      'assets/images/noImg.jpg',
+                                      fit: BoxFit.fill,
+                                    ),
                         ),
                       )),
                   Positioned(
@@ -109,7 +113,7 @@ class VehicleCard extends StatelessWidget {
                           BlurryContainer(
                             blur: 12,
                             borderRadius: BorderRadius.circular(14),
-                            padding: EdgeInsets.all(5),
+                            padding: EdgeInsets.all(4),
                             width: _calculateWidth(
                                 vehicle.year.length.toDouble(), true),
                             height: 25,
@@ -118,7 +122,7 @@ class VehicleCard extends StatelessWidget {
                               child: Text(vehicle.year,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 17,
+                                      fontSize: 20,
                                       /* backgroundColor:
                                           Color.fromARGB(255, 50, 51, 51), */
                                       color: theme == ThemeMode.light

@@ -1,5 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../providers/theme_manager.dart';
 
 class Graph extends StatelessWidget {
   final String m1, m2;
@@ -7,10 +10,18 @@ class Graph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Color> gradientColors = [
-      Color.fromARGB(255, 231, 32, 92),
-      Color.fromARGB(255, 124, 21, 64),
-    ];
+    final theme = context.watch<ThemeManager>().themeMode;
+    final isLight = theme == ThemeMode.light;
+
+    List<Color> gradientColors = isLight
+        ? const [
+            Color.fromARGB(255, 223, 121, 74),
+            Color.fromARGB(255, 199, 94, 9),
+          ]
+        : const [
+            Color.fromARGB(255, 231, 32, 92),
+            Color.fromARGB(255, 124, 21, 64),
+          ];
     return LineChart(LineChartData(
       gridData: FlGridData(
         show: true,

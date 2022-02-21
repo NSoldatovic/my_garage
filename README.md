@@ -6,3 +6,4 @@
 
 ## 
 https://youtu.be/X0_WhTvBZnU
+*moguce je da aplikacija na snimku malo secka ali to je zbog mog telefona jer je malo stariji

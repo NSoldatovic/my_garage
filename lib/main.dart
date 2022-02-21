@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:my_garage/providers/theme_manager.dart';
 import 'package:my_garage/screens/add_vehicle/add_vehicle.dart';
-import 'package:my_garage/screens/loading_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:is_first_run/is_first_run.dart';
 
 import 'providers/list_of_vehicles.dart';
+import 'screens/splash_screen/loading_screen.dart';
 import 'screens/vehicle_details/vehicle_details_screen.dart';
 import 'screens/vehicle_garage/garage.dart';
 import 'utils/db_helper.dart';

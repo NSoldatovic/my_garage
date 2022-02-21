@@ -1,7 +1,8 @@
 # My Garage
 
-![Screenshot_20220221-145318](https://user-images.githubusercontent.com/95249108/154968904-9ce1a735-3082-4583-be76-b7e63d13a1ae.png)
-![Screenshot_20220221-145751](https://user-images.githubusercontent.com/95249108/154969236-6747b138-09c3-4932-b6e7-9e743800ee95.png)
+
+<img width="201" alt="11111111" src="https://user-images.githubusercontent.com/95249108/154969556-f7b428c7-445f-4032-87f7-a574bea53544.png">
+<img width="199" alt="2222222222" src="https://user-images.githubusercontent.com/95249108/154969566-5a271351-3c04-43e6-94d9-11cc2be33a0d.png">
 
 ## 
 https://youtu.be/X0_WhTvBZnU

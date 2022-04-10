@@ -42,6 +42,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     //print('NESTOOOO PRVOOO');
+    //OVO JE TEST 1 PRVI COMMIT
 
     dataFuture = _getData();
     super.initState();
